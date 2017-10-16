@@ -1,0 +1,20 @@
+version: '3'
+
+
+services:
+  ngrok:
+    build: ./ngrok
+    ports:
+      - "32772:4040"
+    networks:
+      app-network:
+        ipv4_address: 172.30.0.10
+    container_name: webserver
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16
